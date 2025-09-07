@@ -1,0 +1,247 @@
+{
+  "database_name": "dbcp",
+  "test_timestamp": "2025-09-07T12:03:24.067414",
+  "total_queries": 16,
+  "query_results": {
+    "fe_dmv_all_full_scan": {
+      "query_name": "fe_dmv_all_full_scan",
+      "description": "FE_DMV_ALL full table scan with filtering",
+      "status": "success",
+      "execution_times": [
+        1.0778350830078125,
+        0.5539121627807617,
+        0.5310091972351074
+      ],
+      "avg_execution_time": 0.7209188143412272,
+      "min_execution_time": 0.5310091972351074,
+      "max_execution_time": 1.0778350830078125,
+      "avg_rows_returned": 997.0,
+      "total_runs": 3,
+      "errors": []
+    },
+    "fe_dmv_all_symbol_filter": {
+      "query_name": "fe_dmv_all_symbol_filter",
+      "description": "FE_DMV_ALL symbol-specific filtering",
+      "status": "success",
+      "execution_times": [
+        0.5247700214385986,
+        0.5382132530212402,
+        0.5167975425720215
+      ],
+      "avg_execution_time": 0.5265936056772867,
+      "min_execution_time": 0.5167975425720215,
+      "max_execution_time": 0.5382132530212402,
+      "avg_rows_returned": 5.0,
+      "total_runs": 3,
+      "errors": []
+    },
+    "fe_dmv_all_aggregation": {
+      "query_name": "fe_dmv_all_aggregation",
+      "description": "FE_DMV_ALL aggregation query",
+      "status": "success",
+      "execution_times": [
+        0.5236663818359375,
+        0.5174562931060791,
+        0.5539422035217285
+      ],
+      "avg_execution_time": 0.5316882928212484,
+      "min_execution_time": 0.5174562931060791,
+      "max_execution_time": 0.5539422035217285,
+      "avg_rows_returned": 0.0,
+      "total_runs": 3,
+      "errors": []
+    },
+    "multi_signal_join": {
+      "query_name": "multi_signal_join",
+      "description": "JOIN multiple FE_*_SIGNALS tables",
+      "status": "success",
+      "execution_times": [
+        0.6753690242767334,
+        0.5751144886016846,
+        0.5173916816711426
+      ],
+      "avg_execution_time": 0.5892917315165201,
+      "min_execution_time": 0.5173916816711426,
+      "max_execution_time": 0.6753690242767334,
+      "avg_rows_returned": 3.0,
+      "total_runs": 3,
+      "errors": []
+    },
+    "ohlcv_price_analysis": {
+      "query_name": "ohlcv_price_analysis",
+      "description": "1K_coins_ohlcv price and volume analysis",
+      "status": "success",
+      "execution_times": [
+        0.630561351776123,
+        0.517857551574707,
+        0.5372152328491211
+      ],
+      "avg_execution_time": 0.5618780453999838,
+      "min_execution_time": 0.517857551574707,
+      "max_execution_time": 0.630561351776123,
+      "avg_rows_returned": 28.0,
+      "total_runs": 3,
+      "errors": []
+    },
+    "ohlcv_volume_leaders": {
+      "query_name": "ohlcv_volume_leaders",
+      "description": "1K_coins_ohlcv volume analysis",
+      "status": "success",
+      "execution_times": [
+        0.6081361770629883,
+        0.5459959506988525,
+        0.5295462608337402
+      ],
+      "avg_execution_time": 0.5612261295318604,
+      "min_execution_time": 0.5295462608337402,
+      "max_execution_time": 0.6081361770629883,
+      "avg_rows_returned": 100.0,
+      "total_runs": 3,
+      "errors": []
+    },
+    "ohlcv_backup_comparison": {
+      "query_name": "ohlcv_backup_comparison",
+      "description": "1K_coins_ohlcv vs backup table comparison",
+      "status": "failed",
+      "errors": [
+        "(psycopg2.errors.UndefinedTable) relation \"1K_coins_ohlcv_backup\" does not exist\nLINE 3:                            (SELECT COUNT(*) FROM \"1K_coins_o...\n                                                         ^\n\n[SQL: \n                    SELECT COUNT(*) as main_count,\n                           (SELECT COUNT(*) FROM \"1K_coins_ohlcv_backup\" WHERE timestamp >= %(start_date)s) as backup_count\n                    FROM \"1K_coins_ohlcv\"\n                    WHERE timestamp >= %(start_date)s\n                ]\n[parameters: {'start_date': '2025-08-31 12:03:24.067364'}]\n(Background on this error at: https://sqlalche.me/e/20/f405)",
+        "(psycopg2.errors.UndefinedTable) relation \"1K_coins_ohlcv_backup\" does not exist\nLINE 3:                            (SELECT COUNT(*) FROM \"1K_coins_o...\n                                                         ^\n\n[SQL: \n                    SELECT COUNT(*) as main_count,\n                           (SELECT COUNT(*) FROM \"1K_coins_ohlcv_backup\" WHERE timestamp >= %(start_date)s) as backup_count\n                    FROM \"1K_coins_ohlcv\"\n                    WHERE timestamp >= %(start_date)s\n                ]\n[parameters: {'start_date': '2025-08-31 12:03:24.067364'}]\n(Background on this error at: https://sqlalche.me/e/20/f405)",
+        "(psycopg2.errors.UndefinedTable) relation \"1K_coins_ohlcv_backup\" does not exist\nLINE 3:                            (SELECT COUNT(*) FROM \"1K_coins_o...\n                                                         ^\n\n[SQL: \n                    SELECT COUNT(*) as main_count,\n                           (SELECT COUNT(*) FROM \"1K_coins_ohlcv_backup\" WHERE timestamp >= %(start_date)s) as backup_count\n                    FROM \"1K_coins_ohlcv\"\n                    WHERE timestamp >= %(start_date)s\n                ]\n[parameters: {'start_date': '2025-08-31 12:03:24.067364'}]\n(Background on this error at: https://sqlalche.me/e/20/f405)"
+      ]
+    },
+    "crypto_listings_analysis": {
+      "query_name": "crypto_listings_analysis",
+      "description": "crypto_listings_latest_1000 market analysis",
+      "status": "failed",
+      "errors": [
+        "(psycopg2.errors.UndefinedColumn) column \"percent_change_24h\" does not exist\nLINE 3:                            percent_change_24h, percent_chang...\n                                   ^\nHINT:  Perhaps you meant to reference the column \"crypto_listings_latest_1000.percent_change24h\".\n\n[SQL: \n                    SELECT slug, name, symbol, cmc_rank, market_cap, \n                           percent_change_24h, percent_change_7d\n                    FROM \"crypto_listings_latest_1000\"\n                    WHERE market_cap > 1000000\n                    ORDER BY market_cap DESC\n                    LIMIT 200\n                ]\n(Background on this error at: https://sqlalche.me/e/20/f405)",
+        "(psycopg2.errors.UndefinedColumn) column \"percent_change_24h\" does not exist\nLINE 3:                            percent_change_24h, percent_chang...\n                                   ^\nHINT:  Perhaps you meant to reference the column \"crypto_listings_latest_1000.percent_change24h\".\n\n[SQL: \n                    SELECT slug, name, symbol, cmc_rank, market_cap, \n                           percent_change_24h, percent_change_7d\n                    FROM \"crypto_listings_latest_1000\"\n                    WHERE market_cap > 1000000\n                    ORDER BY market_cap DESC\n                    LIMIT 200\n                ]\n(Background on this error at: https://sqlalche.me/e/20/f405)",
+        "(psycopg2.errors.UndefinedColumn) column \"percent_change_24h\" does not exist\nLINE 3:                            percent_change_24h, percent_chang...\n                                   ^\nHINT:  Perhaps you meant to reference the column \"crypto_listings_latest_1000.percent_change24h\".\n\n[SQL: \n                    SELECT slug, name, symbol, cmc_rank, market_cap, \n                           percent_change_24h, percent_change_7d\n                    FROM \"crypto_listings_latest_1000\"\n                    WHERE market_cap > 1000000\n                    ORDER BY market_cap DESC\n                    LIMIT 200\n                ]\n(Background on this error at: https://sqlalche.me/e/20/f405)"
+      ]
+    },
+    "crypto_global_metrics": {
+      "query_name": "crypto_global_metrics",
+      "description": "crypto_global_latest metrics",
+      "status": "failed",
+      "errors": [
+        "(psycopg2.errors.UndefinedColumn) column \"timestamp\" does not exist\nLINE 2:                     SELECT timestamp, total_market_cap, tota...\n                                   ^\n\n[SQL: \n                    SELECT timestamp, total_market_cap, total_volume_24h, \n                           bitcoin_percentage_of_market_cap, active_cryptocurrencies\n                    FROM \"crypto_global_latest\"\n                    ORDER BY timestamp DESC\n                    LIMIT 100\n                ]\n(Background on this error at: https://sqlalche.me/e/20/f405)",
+        "(psycopg2.errors.UndefinedColumn) column \"timestamp\" does not exist\nLINE 2:                     SELECT timestamp, total_market_cap, tota...\n                                   ^\n\n[SQL: \n                    SELECT timestamp, total_market_cap, total_volume_24h, \n                           bitcoin_percentage_of_market_cap, active_cryptocurrencies\n                    FROM \"crypto_global_latest\"\n                    ORDER BY timestamp DESC\n                    LIMIT 100\n                ]\n(Background on this error at: https://sqlalche.me/e/20/f405)",
+        "(psycopg2.errors.UndefinedColumn) column \"timestamp\" does not exist\nLINE 2:                     SELECT timestamp, total_market_cap, tota...\n                                   ^\n\n[SQL: \n                    SELECT timestamp, total_market_cap, total_volume_24h, \n                           bitcoin_percentage_of_market_cap, active_cryptocurrencies\n                    FROM \"crypto_global_latest\"\n                    ORDER BY timestamp DESC\n                    LIMIT 100\n                ]\n(Background on this error at: https://sqlalche.me/e/20/f405)"
+      ]
+    },
+    "momentum_indicators": {
+      "query_name": "momentum_indicators",
+      "description": "FE_MOMENTUM technical indicators",
+      "status": "success",
+      "execution_times": [
+        0.5537269115447998,
+        0.5160965919494629,
+        0.5925109386444092
+      ],
+      "avg_execution_time": 0.5541114807128906,
+      "min_execution_time": 0.5160965919494629,
+      "max_execution_time": 0.5925109386444092,
+      "avg_rows_returned": 2.0,
+      "total_runs": 3,
+      "errors": []
+    },
+    "oscillator_analysis": {
+      "query_name": "oscillator_analysis",
+      "description": "FE_OSCILLATOR MACD and CCI analysis",
+      "status": "success",
+      "execution_times": [
+        0.5422506332397461,
+        0.5552103519439697,
+        0.5285401344299316
+      ],
+      "avg_execution_time": 0.5420003732045492,
+      "min_execution_time": 0.5285401344299316,
+      "max_execution_time": 0.5552103519439697,
+      "avg_rows_returned": 400.0,
+      "total_runs": 3,
+      "errors": []
+    },
+    "news_tokenomics": {
+      "query_name": "news_tokenomics",
+      "description": "NEWS_TOKENOMICS_W recent events",
+      "status": "success",
+      "execution_times": [
+        0.5299792289733887,
+        0.5524475574493408,
+        0.5989913940429688
+      ],
+      "avg_execution_time": 0.5604727268218994,
+      "min_execution_time": 0.5299792289733887,
+      "max_execution_time": 0.5989913940429688,
+      "avg_rows_returned": 4.0,
+      "total_runs": 3,
+      "errors": []
+    },
+    "news_airdrops": {
+      "query_name": "news_airdrops",
+      "description": "NEWS_AIRDROPS_W analysis",
+      "status": "success",
+      "execution_times": [
+        0.5199007987976074,
+        0.5715398788452148,
+        0.5226852893829346
+      ],
+      "avg_execution_time": 0.5380419890085856,
+      "min_execution_time": 0.5199007987976074,
+      "max_execution_time": 0.5715398788452148,
+      "avg_rows_returned": 1.0,
+      "total_runs": 3,
+      "errors": []
+    },
+    "price_vs_signals": {
+      "query_name": "price_vs_signals",
+      "description": "Price data vs signals correlation",
+      "status": "success",
+      "execution_times": [
+        0.582312822341919,
+        0.5181419849395752,
+        0.6058385372161865
+      ],
+      "avg_execution_time": 0.5687644481658936,
+      "min_execution_time": 0.5181419849395752,
+      "max_execution_time": 0.6058385372161865,
+      "avg_rows_returned": 3.0,
+      "total_runs": 3,
+      "errors": []
+    },
+    "market_overview": {
+      "query_name": "market_overview",
+      "description": "Complete market overview query",
+      "status": "failed",
+      "errors": [
+        "(psycopg2.errors.UndefinedColumn) column l.percent_change_24h does not exist\nLINE 2: ...             SELECT l.slug, l.name, l.market_cap, l.percent_...\n                                                             ^\nHINT:  Perhaps you meant to reference the column \"l.percent_change24h\".\n\n[SQL: \n                    SELECT l.slug, l.name, l.market_cap, l.percent_change_24h,\n                           d.bullish, d.bearish, d.neutral,\n                           p.close as latest_price, p.volume as latest_volume\n                    FROM \"crypto_listings_latest_1000\" l\n                    LEFT JOIN \"FE_DMV_ALL\" d ON l.slug = d.slug\n                    LEFT JOIN \"1K_coins_ohlcv\" p ON l.slug = p.slug\n                    WHERE l.market_cap > 100000000\n                    AND d.timestamp >= %(start_date)s\n                    AND p.timestamp >= %(start_date)s\n                    ORDER BY l.market_cap DESC\n                    LIMIT 100\n                ]\n[parameters: {'start_date': '2025-08-31 12:03:24.067364'}]\n(Background on this error at: https://sqlalche.me/e/20/f405)",
+        "(psycopg2.errors.UndefinedColumn) column l.percent_change_24h does not exist\nLINE 2: ...             SELECT l.slug, l.name, l.market_cap, l.percent_...\n                                                             ^\nHINT:  Perhaps you meant to reference the column \"l.percent_change24h\".\n\n[SQL: \n                    SELECT l.slug, l.name, l.market_cap, l.percent_change_24h,\n                           d.bullish, d.bearish, d.neutral,\n                           p.close as latest_price, p.volume as latest_volume\n                    FROM \"crypto_listings_latest_1000\" l\n                    LEFT JOIN \"FE_DMV_ALL\" d ON l.slug = d.slug\n                    LEFT JOIN \"1K_coins_ohlcv\" p ON l.slug = p.slug\n                    WHERE l.market_cap > 100000000\n                    AND d.timestamp >= %(start_date)s\n                    AND p.timestamp >= %(start_date)s\n                    ORDER BY l.market_cap DESC\n                    LIMIT 100\n                ]\n[parameters: {'start_date': '2025-08-31 12:03:24.067364'}]\n(Background on this error at: https://sqlalche.me/e/20/f405)",
+        "(psycopg2.errors.UndefinedColumn) column l.percent_change_24h does not exist\nLINE 2: ...             SELECT l.slug, l.name, l.market_cap, l.percent_...\n                                                             ^\nHINT:  Perhaps you meant to reference the column \"l.percent_change24h\".\n\n[SQL: \n                    SELECT l.slug, l.name, l.market_cap, l.percent_change_24h,\n                           d.bullish, d.bearish, d.neutral,\n                           p.close as latest_price, p.volume as latest_volume\n                    FROM \"crypto_listings_latest_1000\" l\n                    LEFT JOIN \"FE_DMV_ALL\" d ON l.slug = d.slug\n                    LEFT JOIN \"1K_coins_ohlcv\" p ON l.slug = p.slug\n                    WHERE l.market_cap > 100000000\n                    AND d.timestamp >= %(start_date)s\n                    AND p.timestamp >= %(start_date)s\n                    ORDER BY l.market_cap DESC\n                    LIMIT 100\n                ]\n[parameters: {'start_date': '2025-08-31 12:03:24.067364'}]\n(Background on this error at: https://sqlalche.me/e/20/f405)"
+      ]
+    },
+    "signals_summary": {
+      "query_name": "signals_summary",
+      "description": "Cross-table signals summary",
+      "status": "success",
+      "execution_times": [
+        0.6189277172088623,
+        0.6616256237030029,
+        0.5168290138244629
+      ],
+      "avg_execution_time": 0.599127451578776,
+      "min_execution_time": 0.5168290138244629,
+      "max_execution_time": 0.6616256237030029,
+      "avg_rows_returned": 1.0,
+      "total_runs": 3,
+      "errors": []
+    }
+  },
+  "summary": {
+    "successful_queries": 12,
+    "failed_queries": 4,
+    "overall_avg_time": 0.5711762573983934,
+    "fastest_query": 0.5265936056772867,
+    "slowest_query": 0.7209188143412272,
+    "total_test_time": 6.854115088780721
+  }
+}
