@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  cryptoprism-dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile.streamlit
+    ports:
+      - "8501:8501"
+    environment:
+      - DB_HOST=${DB_HOST:-localhost}
+      - DB_USER=${DB_USER:-postgres}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_PORT=${DB_PORT:-5432}
+      - DB_NAME=${DB_NAME:-dbcp}
+      - DASHBOARD_PASSWORD=${DASHBOARD_PASSWORD:-admin123}
+      - SLACK_WEBHOOK_URL=${SLACK_WEBHOOK_URL:-}
+    volumes:
+      - ./logs:/app/logs
+      - ./output:/app/output
+    env_file:
+      - .env
+    restart: unless-stopped
+    networks:
+      - cryptoprism_network
+    depends_on:
+      - postgres
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.dashboard.rule=Host(`dashboard.cryptoprism.local`)"
+      - "traefik.http.services.dashboard.loadbalancer.server.port=8501"
+
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_DB=${DB_NAME:-dbcp}
+      - POSTGRES_USER=${DB_USER:-postgres}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    ports:
+      - "${DB_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./etl_tracking_setup.sql:/docker-entrypoint-initdb.d/etl_tracking_setup.sql
+    networks:
+      - cryptoprism_network
+
+volumes:
+  postgres_data:
+
+networks:
+  cryptoprism_network:
+    driver: bridge

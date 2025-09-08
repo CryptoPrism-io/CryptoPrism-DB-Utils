@@ -8,6 +8,11 @@ requests>=2.32.3
 typing-extensions>=4.12.2
 python-dateutil>=2.8.0
 
+# Streamlit dashboard dependencies
+streamlit>=1.28.0
+plotly>=5.17.0
+altair>=5.1.0
+
 # Optional visualization dependencies (install with: pip install -r requirements-viz.txt)
 # matplotlib>=3.7.0
 # seaborn>=0.12.0
