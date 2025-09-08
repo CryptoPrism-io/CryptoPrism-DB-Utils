@@ -1,0 +1,126 @@
+{
+  "test_timestamp": "2025-09-08T12:40:12.874049",
+  "database_name": "dbcp",
+  "test_type": "comprehensive_validation_with_fixes",
+  "version": "1.0.1",
+  "fixes_applied": [
+    "query_optimization_toolkit",
+    "schema_correction_toolkit",
+    "primary_key_completion_toolkit"
+  ],
+  "tests": {
+    "primary_key_validation_optimized": {
+      "status": "success",
+      "execution_time_ms": 5402.499198913574,
+      "rows_returned": 19,
+      "description": "FIXED: Optimized primary key validation using pg_constraint",
+      "expected_performance": "Should execute in <1000ms (improved from 5200ms)",
+      "performance_status": "SLOW",
+      "fix_applied": "query_optimization_toolkit"
+    },
+    "fe_dmv_all_count_optimized": {
+      "status": "success",
+      "execution_time_ms": 845.6439971923828,
+      "rows_returned": 1,
+      "description": "Count query on main analysis table",
+      "expected_performance": "Should maintain <1000ms performance",
+      "performance_status": "GOOD",
+      "fix_applied": "none"
+    },
+    "fe_dmv_all_recent_data_optimized": {
+      "status": "success",
+      "execution_time_ms": 869.2102432250977,
+      "rows_returned": 10,
+      "description": "Recent data query with timestamp index",
+      "expected_performance": "Should use timestamp index efficiently",
+      "performance_status": "GOOD",
+      "fix_applied": "none"
+    },
+    "ohlcv_volume_analysis_optimized": {
+      "status": "success",
+      "execution_time_ms": 922.168493270874,
+      "rows_returned": 20,
+      "description": "Volume analysis with dedicated volume index",
+      "expected_performance": "Should use volume index efficiently",
+      "performance_status": "GOOD",
+      "fix_applied": "none"
+    },
+    "multi_table_join_corrected": {
+      "status": "success",
+      "execution_time_ms": 873.8157749176025,
+      "rows_returned": 15,
+      "description": "FIXED: Multi-table JOIN using correct table references",
+      "expected_performance": "Should use primary key indexes for JOINs",
+      "performance_status": "GOOD",
+      "fix_applied": "schema_correction_toolkit"
+    },
+    "comprehensive_momentum_analysis": {
+      "status": "success",
+      "execution_time_ms": 829.7245502471924,
+      "rows_returned": 10,
+      "description": "NEW: Comprehensive technical analysis with corrected table references",
+      "expected_performance": "Should leverage all primary key optimizations",
+      "performance_status": "GOOD",
+      "fix_applied": "schema_correction_toolkit"
+    },
+    "crypto_listings_market_cap": {
+      "status": "success",
+      "execution_time_ms": 874.6681213378906,
+      "rows_returned": 25,
+      "description": "Crypto listings filtering (should have primary key)",
+      "expected_performance": "Should work reliably with primary key optimization",
+      "performance_status": "GOOD",
+      "fix_applied": "none"
+    },
+    "news_events_analysis": {
+      "status": "success",
+      "execution_time_ms": 801.0051250457764,
+      "rows_returned": 7,
+      "description": "News events query (should have primary key)",
+      "expected_performance": "Should use primary key effectively",
+      "performance_status": "GOOD",
+      "fix_applied": "none"
+    },
+    "fear_greed_trend": {
+      "status": "success",
+      "execution_time_ms": 922.0800399780273,
+      "rows_returned": 30,
+      "description": "Fear/Greed trend analysis (should have primary key)",
+      "expected_performance": "Should use timestamp primary key",
+      "performance_status": "GOOD",
+      "fix_applied": "none"
+    },
+    "reference_data_lookup": {
+      "status": "success",
+      "execution_time_ms": 920.0136661529541,
+      "rows_returned": 4,
+      "description": "Reference data lookups (should have primary key)",
+      "expected_performance": "Should use slug primary key efficiently",
+      "performance_status": "GOOD",
+      "fix_applied": "none"
+    },
+    "aggregation_performance_enhanced": {
+      "status": "success",
+      "execution_time_ms": 792.1559810638428,
+      "rows_returned": 0,
+      "description": "Enhanced aggregation with additional metrics",
+      "expected_performance": "Should benefit from primary key structure",
+      "performance_status": "GOOD",
+      "fix_applied": "none"
+    },
+    "performance_regression_test": {
+      "status": "failed",
+      "error": "(psycopg2.errors.UndefinedFunction) function round(double precision, integer) does not exist\nLINE 7:                         ROUND((COUNT(CASE WHEN bullish > bea...\n                                ^\nHINT:  No function matches the given name and argument types. You might need to add explicit type casts.\n\n[SQL: \n                    SELECT \n                        slug,\n                        COUNT(*) as total_signals,\n                        ROUND(AVG(bullish)::numeric, 2) as avg_bullish,\n                        ROUND(STDDEV(bullish)::numeric, 2) as volatility,\n                        ROUND((COUNT(CASE WHEN bullish > bearish THEN 1 END)::float / COUNT(*) * 100), 1) as bullish_percentage\n                    FROM \"FE_DMV_ALL\"\n                    WHERE timestamp >= CURRENT_DATE - INTERVAL '7 days'\n                    GROUP BY slug\n                    HAVING COUNT(*) >= 5\n                    ORDER BY AVG(bullish) DESC\n                    LIMIT 15\n                ]\n(Background on this error at: https://sqlalche.me/e/20/f405)",
+      "description": "NEW: Performance regression test with complex analytics",
+      "fix_applied": "none"
+    }
+  },
+  "summary": {
+    "total_tests": 12,
+    "successful_tests": 11,
+    "failed_tests": 1,
+    "total_execution_time_ms": 14052.985191345215,
+    "average_execution_time_ms": 1171.0820992787678,
+    "success_rate_percent": 91.66666666666666
+  }
+}
