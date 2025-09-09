@@ -64,6 +64,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Dashboard deployment now from dedicated directory: `ETL_DB_dashboard/`
 - Reports and configs accessed from organized directories
 
+**Post-Release Migration:**
+- **Dashboard Repository Created** - ETL Dashboard migrated to `C:\cpio_db\ETL_DB_dashboard` as standalone repository
+- **Independent Development** - Dashboard now operates completely separate from main utilities
+- **Configuration Preserved** - All `.env` and `.claude` settings copied to maintain workflow continuity
+- **Git Repository Initialized** - Fresh repository with initial commit `c0f7a33` for independent version control
+
 ---
 
 ## [v1.1.0] - 2025-09-08 18:00 UTC
