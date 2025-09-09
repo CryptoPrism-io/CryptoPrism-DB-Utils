@@ -10,6 +10,62 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Minor (x.y.0)**: New features, file reorganization, workflow additions, non-breaking enhancements  
 - **Patch (x.y.z)**: Bug fixes, documentation updates, minor configuration tweaks
 
+## [v1.1.1] - 2025-09-09 23:30 UTC
+
+### 🗂️ MAJOR REORGANIZATION: Complete Project Structure Overhaul
+
+**Repository Architecture Enhancement:**
+
+**ETL Dashboard Separation:**
+- **Complete Dashboard Isolation** - Moved all Streamlit dashboard components to dedicated `ETL_DB_dashboard/` directory
+- **Self-contained Repository** - Dashboard now functions as independent module with all dependencies
+- **Professional Structure** - Added comprehensive documentation, Docker configs, and repository-style organization
+- **Missing Dependencies Resolved** - Moved `pages/`, `services/`, `config/`, `utils/`, and `components/` directories to dashboard
+
+**Root Directory Organization:**
+- **Tools Categorization** - Organized 16+ scattered Python tools into logical categories:
+  - `tools/primary_keys/` - 6 primary key management tools
+  - `tools/schema_analysis/` - 5 schema analysis and correction tools  
+  - `tools/performance/` - 2 performance testing and optimization tools
+  - `tools/indexing/` - 2 indexing analysis and optimization tools
+  - `tools/validation/` - 1 comprehensive validation suite
+  - `tools/utilities/` - 2 general database utilities
+- **Report Management** - Centralized all generated reports in `reports/` with subcategories
+- **Configuration Templates** - Organized environment and config files in `config_templates/`
+- **SQL Scripts** - Standalone SQL files moved to `sql_scripts/`
+
+**Documentation Enhancement:**
+- **ETL_DB_dashboard/README.md** - Complete dashboard deployment and usage guide
+- **tools/README.md** - Comprehensive documentation for all 16 database tools with workflows
+- **reports/README.md** - Report management and analysis guide
+- **Structure Documentation** - Updated all directory structures and cross-references
+
+**Files Reorganized:**
+- **Dashboard Files (7)**: streamlit_app.py, setup_dashboard.py, docker configs, SQL setup, documentation
+- **Tool Dependencies (4 directories)**: pages/, services/, config/, utils/, components/  
+- **Python Tools (16)**: All database analysis, optimization, and maintenance scripts
+- **Reports & Results**: All .md and .json output files properly categorized
+- **Configuration**: Environment templates and requirements files organized
+
+**Benefits Achieved:**
+- **Professional Structure** - Repository now follows software engineering best practices
+- **Easy Navigation** - Tools organized by function instead of 25+ scattered files
+- **Self-contained Modules** - Dashboard and tools can function independently
+- **Improved Maintainability** - Clear separation of concerns and comprehensive documentation
+- **Enhanced Usability** - Logical workflows and categorized tooling
+
+**Breaking Changes:**
+- File paths updated for reorganized structure
+- Import paths adjusted in dashboard components
+- Docker configurations updated for new directory structure
+
+**Migration Impact:**
+- Existing tool usage requires updated paths: `python tools/category/tool_name.py`
+- Dashboard deployment now from dedicated directory: `ETL_DB_dashboard/`
+- Reports and configs accessed from organized directories
+
+---
+
 ## [v1.1.0] - 2025-09-08 18:00 UTC
 
 ### 🚀 MAJOR FEATURE: Complete Streamlit Dashboard Implementation

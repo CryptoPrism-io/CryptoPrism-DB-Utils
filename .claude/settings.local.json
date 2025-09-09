@@ -15,7 +15,19 @@
       "Bash(streamlit run:*)",
       "Bash(git checkout:*)",
       "Bash(pkill:*)",
-      "Bash(wmic:*)"
+      "Bash(wmic:*)",
+      "Bash(taskkill:*)",
+      "Bash(cmd.exe /c taskkill /F /IM python.exe)",
+      "Bash(mkdir:*)",
+      "Bash(move streamlit_app.py ETL_DB_dashboardapp )",
+      "Bash(move streamlit_app.py.backup ETL_DB_dashboardapp )",
+      "Bash(move setup_dashboard.py ETL_DB_dashboard )",
+      "Bash(move DASHBOARD_QUICKSTART.md ETL_DB_dashboarddocs )",
+      "Bash(move etl_tracking_setup.sql ETL_DB_dashboardsql )",
+      "Bash(move Dockerfile.streamlit ETL_DB_dashboarddocker )",
+      "Bash(move docker-compose.dashboard.yml ETL_DB_dashboarddocker)",
+      "Bash(mv:*)",
+      "Bash(tree:*)"
     ],
     "deny": [],
     "ask": []

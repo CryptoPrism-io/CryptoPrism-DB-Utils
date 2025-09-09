@@ -1,0 +1,17 @@
+# Streamlit Dashboard Dependencies
+streamlit>=1.28.0
+pandas>=1.5.0
+plotly>=5.17.0
+altair>=5.1.0
+
+# Database
+sqlalchemy>=2.0.0
+psycopg2>=2.9.0
+
+# Utilities
+python-dotenv>=1.0.0
+requests>=2.31.0
+
+# Optional: Enhanced features
+streamlit-option-menu>=0.3.0
+streamlit-aggrid>=0.3.0
