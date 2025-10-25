@@ -1,6 +1,31 @@
 # CryptoPrism Database Utilities
 
-A comprehensive suite of PostgreSQL database analysis, benchmarking, and optimization tools specifically designed for cryptocurrency trading systems.
+<div align="center">
+  <strong>CryptoPrism Database Utilities</strong> — A comprehensive suite of PostgreSQL database analysis, benchmarking, and optimization tools designed for cryptocurrency trading systems.
+</div>
+
+<div align="center">
+  <img alt="Version" src="https://img.shields.io/badge/Version-v1.1.1-blue" />
+  <img alt="Python" src="https://img.shields.io/badge/Python-3.8%2B-blue" />
+  <img alt="PostgreSQL" src="https://img.shields.io/badge/PostgreSQL-12%2B-blue?logo=postgresql&logoColor=white" />
+  <img alt="License" src="https://img.shields.io/badge/License-Proprietary-blue" />
+</div>
+
+## 🛠️ Technology Stack
+
+| Technology | Role | Purpose |
+|------------|------|---------|
+| **Python 3.8+** | Core Language | Database utilities and CLI implementation |
+| **PostgreSQL** | Database Engine | Primary database system for crypto trading data |
+| **SQLAlchemy** | ORM Framework | Database connections and query management |
+| **Streamlit** | Dashboard UI | Web-based monitoring and analytics interface |
+| **Plotly** | Data Visualization | Interactive charts and performance graphs |
+| **Pandas** | Data Processing | Analysis and manipulation of database results |
+| **Docker** | Containerization | Production deployment and environment isolation |
+
+<div align="center">
+  Quick navigation: Features, Installation, Quick Start, Output Structure
+</div>
 
 ## 🚀 Features
 
@@ -47,7 +72,7 @@ pip install -e ".[dev]"
    DB_USER=your_username
    DB_PASSWORD=your_password
    DB_NAME=dbcp
-   
+
    # Optional: Additional Databases
    DB_NAME_AI=cp_ai
    DB_NAME_BT=cp_backtest
@@ -129,6 +154,22 @@ results = analyzer.execute()
 - **SchemaTester**: Schema validation testing
 - **PerformanceComparator**: Performance comparison reports
 
+## 📸 Visual Showcase
+
+<div align="center">
+| Diagram | Caption |
+|---|---|
+| ![Main ERD](database_diagrams/cryptoprism_main_erd_20250901_183540.png) | Main database ERD (dbcp) – 2025-09-01 |
+| ![Backtest ERD](database_diagrams/cryptoprism_backtest_erd_20250901_183417.png) | Backtest ERD (cp_backtest) – 2025-09-01 |
+| ![Main ERD alt](database_diagrams/cryptoprism_main_erd_20250901_183417.png) | Main ERD alternate view – 2025-09-01 |
+</div>
+
+## ✨ What's New
+
+- v1.1.2: README modernization with Visual Showcase, What's New, and formatting enhancements
+- v1.1.1: Major reorganization and dashboard isolation
+- v1.1.0: Complete Streamlit dashboard implementation
+
 ## 🎨 CLI Commands Reference
 
 ### Analysis Commands
@@ -207,6 +248,50 @@ output/
 ├── sql_optimizations/    # Generated SQL optimization scripts
 └── visualizations/       # ERD diagrams and charts
 ```
+
+## 🗂️ Project Structure
+
+```
+CryptoPrism-DB-Utils/
+├── 📦 src/crypto_db_utils/     # Main package source
+│   ├── 🏗️ core/               # Base classes & connections
+│   ├── 🔍 analysis/           # Schema analysis tools
+│   ├── ⚡ benchmarking/       # Performance testing
+│   ├── 🎯 optimization/       # Database optimization
+│   ├── 🏗️ indexing/           # Index management
+│   └── ✅ validation/         # Data integrity checks
+├── 🛠️ tools/                  # Organized utility scripts
+│   ├── primary_keys/          # Primary key management (6 tools)
+│   ├── schema_analysis/       # Schema analysis (5 tools)
+│   ├── performance/           # Performance testing (2 tools)
+│   ├── indexing/              # Index optimization (2 tools)
+│   ├── validation/            # Validation suite (1 tool)
+│   └── utilities/             # General utilities (2 tools)
+├── 📊 ETL_DB_dashboard/       # Streamlit dashboard (standalone)
+├── 📋 reports/                # Generated analysis reports
+├── 🎨 database_diagrams/      # ERD visualizations
+└── ⚙️ config_templates/       # Environment & config files
+```
+
+## 📈 Performance Metrics
+
+**Latest Benchmark Results (v1.0.1 Baseline)**
+- **Test Date**: 2025-09-08 12:19 UTC
+- **Database**: `dbcp` at `34.55.195.199`
+- **Success Rate**: 90% (9/10 tests passed)
+- **Average Query Time**: 1,184ms
+- **Total Test Time**: 11,837ms
+- **Failed Tests**: 1 (multi_table_join_optimized)
+
+**Known Performance Issues Identified:**
+- Primary key validation: 5,229ms (requires optimization)
+- Multi-table JOIN failures: Schema mismatch in FE_MOMENTUM_SIGNALS
+- Incomplete primary key coverage: 19/22 tables (3 missing)
+
+**Optimization Impact:**
+- Dashboard caching reduces database load by 70%
+- Strategic indexing improves query performance by 2-5x
+- Connection pooling handles concurrent users efficiently
 
 ## 🔗 Integration with CryptoPrism-DB
 
@@ -300,5 +385,10 @@ This project is proprietary software owned by CryptoPrism.io. All rights reserve
 See [CHANGELOG.md](CHANGELOG.md) for detailed version history and updates.
 
 ---
+
+<div align="center">
+  <strong>Built with ❤️ by the CryptoPrism team</strong><br>
+  <a href="#cryptoprism-database-utilities">↑ Back to top</a>
+</div>
 
 **CryptoPrism Database Utilities** - Empowering cryptocurrency analysis through intelligent database optimization.

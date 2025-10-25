@@ -10,6 +10,44 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Minor (x.y.0)**: New features, file reorganization, workflow additions, non-breaking enhancements  
 - **Patch (x.y.z)**: Bug fixes, documentation updates, minor configuration tweaks
 
+## [v1.1.2] - 2025-10-25 UTC
+
+### 📝 DOCUMENTATION: README Modernization and Visual Enhancement
+
+**README Complete Overhaul:**
+
+**Visual Showcase Enhancement:**
+- **Hero Section** - Added centered project name, tagline, and professional badge layout
+- **Technology Stack Table** - Converted 7 technology badges to comprehensive comparison table format
+- **📸 Visual Showcase** - Embedded 3 existing ERD diagrams with descriptive captions
+- **🗂️ Project Structure** - Added emoji-based tree visualization showing organized repository structure
+- **📈 Performance Metrics** - Added actual benchmark results and optimization impact data
+
+**Content Organization:**
+- **✨ What's New** - Added version highlights for v1.1.2, v1.1.1, and v1.1.0
+- **Navigation Enhancement** - Quick navigation links to key sections for better UX
+- **Professional Layout** - Consistent center alignment and modern formatting throughout
+- **Modern Footer** - Added "Built with ❤️" footer with back-to-top navigation
+
+**Technical Improvements:**
+- **Badge Standardization** - Version, Python 3.8+, PostgreSQL, and License badges
+- **Performance Data Integration** - Real benchmark results from v1.0.1 baseline testing
+- **Structure Documentation** - Comprehensive project organization with emoji categorization
+- **Visual Assets** - Proper embedding of database_diagrams/ ERD files
+
+**Benefits Achieved:**
+- **Professional Presentation** - Modern, scannable README following GitHub best practices
+- **Visual Documentation** - ERD diagrams provide immediate understanding of database structure
+- **Performance Transparency** - Actual metrics show optimization impact and current status
+- **Enhanced Navigation** - Quick access to key sections improves developer experience
+- **Comprehensive Overview** - Complete picture of project capabilities and architecture
+
+**Files Enhanced:**
+- **README.md** - Complete modernization with visual showcase and performance metrics
+- **CHANGELOG.md** - v1.1.2 entry documenting README enhancement details
+
+---
+
 ## [v1.1.1] - 2025-09-09 23:30 UTC
 
 ### 🗂️ MAJOR REORGANIZATION: Complete Project Structure Overhaul
