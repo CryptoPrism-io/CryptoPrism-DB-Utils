@@ -156,13 +156,11 @@ results = analyzer.execute()
 
 ## 📸 Visual Showcase
 
-<div align="center">
 | Diagram | Caption |
 |---|---|
 | ![Main ERD](database_diagrams/cryptoprism_main_erd_20250901_183540.png) | Main database ERD (dbcp) – 2025-09-01 |
 | ![Backtest ERD](database_diagrams/cryptoprism_backtest_erd_20250901_183417.png) | Backtest ERD (cp_backtest) – 2025-09-01 |
 | ![Main ERD alt](database_diagrams/cryptoprism_main_erd_20250901_183417.png) | Main ERD alternate view – 2025-09-01 |
-</div>
 
 ## ✨ What's New
 
