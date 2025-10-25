@@ -1,0 +1,92 @@
+{
+  "test_timestamp": "2025-10-25T15:27:23.931986",
+  "database_name": "dbcp",
+  "test_type": "post_optimization_validation",
+  "tests": {
+    "primary_key_validation": {
+      "status": "success",
+      "execution_time_ms": 5395.850419998169,
+      "rows_returned": 22,
+      "description": "Validate all primary keys exist",
+      "expected_performance": "N/A",
+      "validation_notes": []
+    },
+    "fe_dmv_all_count_optimized": {
+      "status": "success",
+      "execution_time_ms": 792.3240661621094,
+      "rows_returned": 1,
+      "description": "Count query on main analysis table",
+      "expected_performance": "Should use primary key for better estimates",
+      "validation_notes": []
+    },
+    "fe_dmv_all_recent_data_optimized": {
+      "status": "success",
+      "execution_time_ms": 797.6865768432617,
+      "rows_returned": 10,
+      "description": "Recent data query with timestamp index",
+      "expected_performance": "Should use timestamp index",
+      "validation_notes": []
+    },
+    "ohlcv_volume_analysis_optimized": {
+      "status": "success",
+      "execution_time_ms": 790.219783782959,
+      "rows_returned": 20,
+      "description": "Volume analysis with dedicated volume index",
+      "expected_performance": "Should use volume index efficiently",
+      "validation_notes": []
+    },
+    "multi_table_join_optimized": {
+      "status": "failed",
+      "error": "(psycopg2.errors.UndefinedColumn) column o.macd does not exist\nLINE 7:                     o.MACD\n                            ^\n\n[SQL: \n                SELECT\n                    d.slug,\n                    d.timestamp,\n                    d.bullish,\n                    m.m_mom_rsi_9,\n                    o.MACD\n                FROM \"FE_DMV_ALL\" d\n                JOIN \"FE_MOMENTUM\" m ON d.slug = m.slug AND d.timestamp = m.timestamp\n                JOIN \"FE_OSCILLATORS_SIGNALS\" o ON d.slug = o.slug AND d.timestamp = o.timestamp\n                WHERE d.timestamp >= CURRENT_DATE - INTERVAL '7 days'\n                LIMIT 15\n            ]\n(Background on this error at: https://sqlalche.me/e/20/f405)",
+      "description": "Multi-table JOIN using primary keys"
+    },
+    "crypto_listings_market_cap": {
+      "status": "success",
+      "execution_time_ms": 869.4722652435303,
+      "rows_returned": 25,
+      "description": "Crypto listings filtering (newly optimized table)",
+      "expected_performance": "Should work reliably with new primary key",
+      "validation_notes": []
+    },
+    "news_events_analysis": {
+      "status": "success",
+      "execution_time_ms": 790.4491424560547,
+      "rows_returned": 7,
+      "description": "News events query (newly optimized table)",
+      "expected_performance": "Should use new primary key effectively",
+      "validation_notes": []
+    },
+    "fear_greed_trend": {
+      "status": "success",
+      "execution_time_ms": 792.327880859375,
+      "rows_returned": 30,
+      "description": "Fear/Greed trend analysis (newly optimized)",
+      "expected_performance": "Should use timestamp primary key",
+      "validation_notes": []
+    },
+    "reference_data_lookup": {
+      "status": "success",
+      "execution_time_ms": 793.6639785766602,
+      "rows_returned": 4,
+      "description": "Reference data lookups (newly optimized)",
+      "expected_performance": "Should use slug primary key efficiently",
+      "validation_notes": []
+    },
+    "aggregation_performance": {
+      "status": "success",
+      "execution_time_ms": 792.5875186920166,
+      "rows_returned": 0,
+      "description": "Complex aggregation with grouping",
+      "expected_performance": "Should benefit from primary key structure",
+      "validation_notes": []
+    }
+  },
+  "summary": {
+    "total_tests": 10,
+    "successful_tests": 9,
+    "failed_tests": 1,
+    "total_execution_time_ms": 11814.581632614136,
+    "average_execution_time_ms": 1181.4581632614136,
+    "success_rate_percent": 90.0
+  }
+}

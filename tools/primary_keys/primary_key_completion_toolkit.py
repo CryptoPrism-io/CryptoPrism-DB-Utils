@@ -76,19 +76,19 @@ class PrimaryKeyCompletionToolkit:
                 # Find tables without primary keys
                 tables_without_pk = all_tables - tables_with_pk
             
-            print(f"📊 ANALYSIS RESULTS:")
+            print(f"ANALYSIS RESULTS:")
             print(f"   Total tables: {len(all_tables)}")
             print(f"   Tables with primary keys: {len(tables_with_pk)}")
             print(f"   Tables WITHOUT primary keys: {len(tables_without_pk)}")
-            
-            print(f"\n❌ Tables missing primary keys:")
+
+            print(f"\nTables missing primary keys:")
             for table in sorted(tables_without_pk):
                 print(f"   - {table}")
             
             return tables_without_pk, tables_with_pk, all_tables
             
         except Exception as e:
-            print(f"❌ Error identifying tables: {str(e)}")
+            print(f"Error identifying tables: {str(e)}")
             return set(), set(), set()
     
     def analyze_table_structure(self, table_name):
@@ -101,7 +101,7 @@ class PrimaryKeyCompletionToolkit:
         Returns:
             dict: Analysis results with primary key recommendations
         """
-        print(f"\n🔍 Analyzing: {table_name}")
+        print(f"\nAnalyzing: {table_name}")
         print("-" * 50)
         
         analysis = {
@@ -207,7 +207,8 @@ class PrimaryKeyCompletionToolkit:
                     print(f"     - {candidate['column']} ({candidate['reason']})")
                 
                 recommended = analysis['recommended_strategy']
-                print(f"   🎯 RECOMMENDED: {recommended['column']} - {recommended['reason']}")
+                if recommended:
+                    print(f"   RECOMMENDED: {recommended['column']} - {recommended['reason']}")
             else:
                 print("   ❌ No suitable primary key candidates found")
             
@@ -279,25 +280,25 @@ ALTER TABLE "{table_name}" ADD COLUMN id SERIAL PRIMARY KEY;
         }
         
         if dry_run:
-            print("🔍 DRY RUN MODE - SQL commands will be displayed but not executed")
+            print("DRY RUN MODE - SQL commands will be displayed but not executed")
         else:
-            print("🚀 EXECUTION MODE - SQL commands will be executed")
+            print("EXECUTION MODE - SQL commands will be executed")
         
         for analysis in table_analyses:
             table_name = analysis['table_name']
             
             if not analysis.get('recommended_strategy'):
-                print(f"\n❌ SKIPPING {table_name}: No recommended strategy")
+                print(f"\nSKIPPING {table_name}: No recommended strategy")
                 results['skipped'] += 1
                 continue
-            
+
             sql_command = analysis.get('sql_command')
             if not sql_command:
-                print(f"\n❌ SKIPPING {table_name}: No SQL command generated")
+                print(f"\nSKIPPING {table_name}: No SQL command generated")
                 results['skipped'] += 1
                 continue
             
-            print(f"\n🔧 {table_name}:")
+            print(f"\n{table_name}:")
             print(f"   Strategy: {analysis['recommended_strategy']['strategy']}")
             print(f"   Column(s): {analysis['recommended_strategy']['column']}")
             print(f"   SQL: {sql_command}")
@@ -315,16 +316,16 @@ ALTER TABLE "{table_name}" ADD COLUMN id SERIAL PRIMARY KEY;
                         conn.execute(text(sql_command))
                         conn.commit()
                     
-                    print(f"   ✅ SUCCESS: Primary key added")
+                    print(f"   SUCCESS: Primary key added")
                     results['successful'] += 1
                     results['details'].append({
                         'table': table_name,
                         'status': 'success',
                         'sql': sql_command
                     })
-                    
+
                 except Exception as e:
-                    print(f"   ❌ FAILED: {str(e)}")
+                    print(f"   FAILED: {str(e)}")
                     results['failed'] += 1
                     results['details'].append({
                         'table': table_name,
@@ -334,7 +335,7 @@ ALTER TABLE "{table_name}" ADD COLUMN id SERIAL PRIMARY KEY;
                     })
         
         # Summary
-        print(f"\n📊 EXECUTION SUMMARY:")
+        print(f"\nEXECUTION SUMMARY:")
         print(f"   Total tables: {results['total_tables']}")
         print(f"   Successful: {results['successful']}")
         print(f"   Failed: {results['failed']}")
@@ -358,15 +359,15 @@ ALTER TABLE "{table_name}" ADD COLUMN id SERIAL PRIMARY KEY;
         total = len(all_tables)
         completion_rate = (improvement / total * 100) if total > 0 else 0
         
-        print(f"\n✅ VALIDATION RESULTS:")
+        print(f"\nVALIDATION RESULTS:")
         print(f"   Primary key completion rate: {completion_rate:.1f}% ({improvement}/{total})")
         
         if len(tables_without_pk) == 0:
-            print("🎉 PERFECT: All tables now have primary keys!")
+            print("PERFECT: All tables now have primary keys!")
         elif len(tables_without_pk) <= 3:
-            print(f"✅ GOOD: Only {len(tables_without_pk)} tables remaining without primary keys")
+            print(f"GOOD: Only {len(tables_without_pk)} tables remaining without primary keys")
         else:
-            print(f"⚠️  More work needed: {len(tables_without_pk)} tables still without primary keys")
+            print(f"More work needed: {len(tables_without_pk)} tables still without primary keys")
         
         return len(tables_without_pk), len(tables_with_pk)
     
@@ -374,7 +375,7 @@ ALTER TABLE "{table_name}" ADD COLUMN id SERIAL PRIMARY KEY;
         """Close database connection."""
         if hasattr(self, 'engine'):
             self.engine.dispose()
-            print("\n🔒 Database connection closed")
+            print("\nDatabase connection closed")
 
 def main():
     """Main execution function."""
@@ -390,11 +391,11 @@ def main():
         tables_without_pk, tables_with_pk, all_tables = toolkit.identify_missing_primary_keys()
         
         if not tables_without_pk:
-            print("\n🎉 All tables already have primary keys!")
+            print("\nAll tables already have primary keys!")
             return
         
         # Step 2: Analyze each table without primary key
-        print(f"\n🔍 Analyzing {len(tables_without_pk)} tables without primary keys...")
+        print(f"\nAnalyzing {len(tables_without_pk)} tables without primary keys...")
         table_analyses = []
         
         for table_name in sorted(tables_without_pk):
@@ -402,11 +403,11 @@ def main():
             table_analyses.append(analysis)
         
         # Step 3: Show execution plan (dry run)
-        print(f"\n📋 Execution plan for {len(table_analyses)} tables:")
+        print(f"\nExecution plan for {len(table_analyses)} tables:")
         toolkit.execute_primary_key_additions(table_analyses, dry_run=True)
         
         # Step 4: Ask for confirmation (in production, you might want user confirmation)
-        print(f"\n❓ Ready to execute primary key additions? (This is a dry run for now)")
+        print(f"\nReady to execute primary key additions? (This is a dry run for now)")
         
         # Step 5: Execute primary key additions (set dry_run=False to actually execute)
         results = toolkit.execute_primary_key_additions(table_analyses, dry_run=True)
@@ -414,14 +415,14 @@ def main():
         # Step 6: Validate completion
         remaining, completed = toolkit.validate_primary_key_completion()
         
-        print(f"\n🎯 PRIMARY KEY COMPLETION STATUS:")
+        print(f"\nPRIMARY KEY COMPLETION STATUS:")
         if remaining == 0:
-            print("✅ COMPLETE: All tables now have primary keys!")
+            print("COMPLETE: All tables now have primary keys!")
         else:
-            print(f"⚠️  REMAINING: {remaining} tables still need primary keys")
+            print(f"REMAINING: {remaining} tables still need primary keys")
         
     except Exception as e:
-        print(f"❌ Error during primary key completion: {str(e)}")
+        print(f"Error during primary key completion: {str(e)}")
     
     finally:
         toolkit.close()

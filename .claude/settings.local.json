@@ -27,7 +27,8 @@
       "Bash(move Dockerfile.streamlit ETL_DB_dashboarddocker )",
       "Bash(move docker-compose.dashboard.yml ETL_DB_dashboarddocker)",
       "Bash(mv:*)",
-      "Bash(tree:*)"
+      "Bash(tree:*)",
+      "Bash(git push origin main)"
     ],
     "deny": [],
     "ask": []

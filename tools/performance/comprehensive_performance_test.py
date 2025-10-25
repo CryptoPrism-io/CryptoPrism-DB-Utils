@@ -84,15 +84,15 @@ def run_comprehensive_performance_test():
         {
             'name': 'multi_table_join_optimized',
             'query': '''
-                SELECT 
+                SELECT
                     d.slug,
                     d.timestamp,
                     d.bullish,
                     m.m_mom_rsi_9,
-                    o.MACD
+                    o."MACD"
                 FROM "FE_DMV_ALL" d
-                JOIN "FE_MOMENTUM_SIGNALS" m ON d.slug = m.slug AND d.timestamp = m.timestamp
-                JOIN "FE_OSCILLATORS_SIGNALS" o ON d.slug = o.slug AND d.timestamp = o.timestamp
+                JOIN "FE_MOMENTUM" m ON d.slug = m.slug AND d.timestamp = m.timestamp
+                JOIN "FE_OSCILLATOR" o ON d.slug = o.slug AND d.timestamp = o.timestamp
                 WHERE d.timestamp >= CURRENT_DATE - INTERVAL '7 days'
                 LIMIT 15
             ''',

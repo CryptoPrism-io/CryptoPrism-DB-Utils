@@ -1,0 +1,95 @@
+{
+  "test_timestamp": "2025-10-25T15:40:19.907293",
+  "database_name": "dbcp",
+  "test_type": "post_optimization_validation",
+  "tests": {
+    "primary_key_validation": {
+      "status": "success",
+      "execution_time_ms": 4794.165849685669,
+      "rows_returned": 23,
+      "description": "Validate all primary keys exist",
+      "expected_performance": "N/A",
+      "validation_notes": []
+    },
+    "fe_dmv_all_count_optimized": {
+      "status": "success",
+      "execution_time_ms": 746.6902732849121,
+      "rows_returned": 1,
+      "description": "Count query on main analysis table",
+      "expected_performance": "Should use primary key for better estimates",
+      "validation_notes": []
+    },
+    "fe_dmv_all_recent_data_optimized": {
+      "status": "success",
+      "execution_time_ms": 746.8135356903076,
+      "rows_returned": 10,
+      "description": "Recent data query with timestamp index",
+      "expected_performance": "Should use timestamp index",
+      "validation_notes": []
+    },
+    "ohlcv_volume_analysis_optimized": {
+      "status": "success",
+      "execution_time_ms": 751.9776821136475,
+      "rows_returned": 20,
+      "description": "Volume analysis with dedicated volume index",
+      "expected_performance": "Should use volume index efficiently",
+      "validation_notes": []
+    },
+    "multi_table_join_optimized": {
+      "status": "success",
+      "execution_time_ms": 757.911205291748,
+      "rows_returned": 15,
+      "description": "Multi-table JOIN using primary keys",
+      "expected_performance": "Should use primary key indexes for JOINs",
+      "validation_notes": []
+    },
+    "crypto_listings_market_cap": {
+      "status": "success",
+      "execution_time_ms": 750.3488063812256,
+      "rows_returned": 25,
+      "description": "Crypto listings filtering (newly optimized table)",
+      "expected_performance": "Should work reliably with new primary key",
+      "validation_notes": []
+    },
+    "news_events_analysis": {
+      "status": "success",
+      "execution_time_ms": 746.0925579071045,
+      "rows_returned": 7,
+      "description": "News events query (newly optimized table)",
+      "expected_performance": "Should use new primary key effectively",
+      "validation_notes": []
+    },
+    "fear_greed_trend": {
+      "status": "success",
+      "execution_time_ms": 770.1663970947266,
+      "rows_returned": 30,
+      "description": "Fear/Greed trend analysis (newly optimized)",
+      "expected_performance": "Should use timestamp primary key",
+      "validation_notes": []
+    },
+    "reference_data_lookup": {
+      "status": "success",
+      "execution_time_ms": 743.7915802001953,
+      "rows_returned": 4,
+      "description": "Reference data lookups (newly optimized)",
+      "expected_performance": "Should use slug primary key efficiently",
+      "validation_notes": []
+    },
+    "aggregation_performance": {
+      "status": "success",
+      "execution_time_ms": 746.8390464782715,
+      "rows_returned": 0,
+      "description": "Complex aggregation with grouping",
+      "expected_performance": "Should benefit from primary key structure",
+      "validation_notes": []
+    }
+  },
+  "summary": {
+    "total_tests": 10,
+    "successful_tests": 10,
+    "failed_tests": 0,
+    "total_execution_time_ms": 11554.796934127808,
+    "average_execution_time_ms": 1155.4796934127808,
+    "success_rate_percent": 100.0
+  }
+}
